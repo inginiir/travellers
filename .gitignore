@@ -2,7 +2,7 @@ HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
-
+/node_modules/*
 
 ### STS ###
 .apt_generated
@@ -12,7 +12,7 @@ build/
 .settings
 .springBeans
 .sts4-cache
-
+*.log
 ### IntelliJ IDEA ###
 .idea
 *.iws

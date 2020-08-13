@@ -1,26 +1,16 @@
-var noteApi = Vue.resource('/note{/id}');
+import Vue from 'vue'
+import VueResource from 'vue-resource'
+import App from 'pages/App.vue'
+import {connect} from "./utils/ws";
 
-Vue.component('note-row', {
-    props: ['note'],
-    template: '<div><i>({{ note.id }})</i> {{ note.text }}</div>'
-});
-Vue.component('notes-list', {
-    props: ['notes'],
-    template: '<div><note-row v-for="note in notes" :key="note.id" :note="note" /></div>',
-    created: function () {
-        noteApi.get().then(result =>
-            result.json().then(data =>
-                data.forEach(note => this.notes.push(note)
-                )
-            )
-        )
-    }
-});
+if (frontendData.profile) {
+    connect()
+}
 
-var app = new Vue({
+Vue.use(VueResource)
+
+new Vue({
     el: '#app',
-    template: '<notes-list :notes="notes"/>',
-    data: {
-        notes: []
-    }
-});
+    render: a => a(App)
+})
+
